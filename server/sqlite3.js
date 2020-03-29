@@ -71,13 +71,57 @@ function closeDatabase(db) {
     });
 }
 
+/*
+Query all the movies from the movies table
+*/
+function allMovies(db) {
+    const sql = 'SELECT DISTINCT * FROM MOVIES'
+    db.all(sql, function (err, rows) {
+        rows.forEach(function (row) {
+            console.log(row);
+        })
+    });	
+}
+
+/*
+Query movies with rating higher or equal to 7
+*/
+function ratingMovies(db) {
+    const sql = 'SELECT DISTINCT * FROM MOVIES WHERE RATING >= 7'
+    db.all(sql, function (err, rows) {
+        rows.forEach(function (row) {
+            console.log(row);
+        })
+    });	
+}
+
+/*
+Query all awesome movies
+*/
+function allAwesome(db) {
+    const sql = 'SELECT DISTINCT * FROM AWESOME'
+    db.all(sql, function (err, rows) {
+        rows.forEach(function (row) {
+            console.log(row);
+        })
+    });
+}
+
 function main() {
     let db = openDatabase();
+
+    //Setting up the database
 
     //dropTables(db);
     //createTables(db);
     //insertMovies(db);
     //insertAwesome(db);
+
+    //Queries
+
+    //allMovies(db);
+    //ratingMovies(db);
+    //allAwesome(db);
     
     closeDatabase(db);
 }
